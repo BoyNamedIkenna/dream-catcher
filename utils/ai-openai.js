@@ -1,9 +1,10 @@
-import OpenAI from 'openai';
-const openai = new OpenAI({
+import Groq from "groq-sdk";
+
+const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
   });
 
-// Call OpenAI API for dream interpretation
+// Call Groq API for dream interpretation
 export async function getDreamInterpretation(dreamText) {
   if (!process.env.GROQ_API_KEY) {
     throw new Error('Server misconfigured: GROQ_API_KEY is missing');
@@ -12,7 +13,7 @@ export async function getDreamInterpretation(dreamText) {
   const model = process.env.GROQ_API_MODEL || 'openai/gpt-oss-120b';
 
   try {
-    const message = await openai.chat.completions.create({
+    const message = await groq.chat.completions.create({
       model,
       max_tokens: 512,
       messages: [
