@@ -1,10 +1,9 @@
-import Groq from "groq-sdk";
-
+import Groq from 'groq-sdk';
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
   });
 
-// Call Groq API for dream interpretation
+// Call GROQ API for dream interpretation
 export async function getDreamInterpretation(dreamText) {
   if (!process.env.GROQ_API_KEY) {
     throw new Error('Server misconfigured: GROQ_API_KEY is missing');
